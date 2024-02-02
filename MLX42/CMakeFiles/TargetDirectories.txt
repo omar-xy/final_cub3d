@@ -1,0 +1,7 @@
+/Users/otaraki/Desktop/lol_cub/MLX42/CMakeFiles/mlx42.dir
+/Users/otaraki/Desktop/lol_cub/MLX42/CMakeFiles/edit_cache.dir
+/Users/otaraki/Desktop/lol_cub/MLX42/CMakeFiles/rebuild_cache.dir
+/Users/otaraki/Desktop/lol_cub/MLX42/CMakeFiles/list_install_components.dir
+/Users/otaraki/Desktop/lol_cub/MLX42/CMakeFiles/install.dir
+/Users/otaraki/Desktop/lol_cub/MLX42/CMakeFiles/install/local.dir
+/Users/otaraki/Desktop/lol_cub/MLX42/CMakeFiles/install/strip.dir
