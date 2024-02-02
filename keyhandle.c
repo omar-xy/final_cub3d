@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 04:23:52 by ahamrad           #+#    #+#             */
-/*   Updated: 2024/02/02 13:05:24 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/02 20:54:04 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void move_player(t_cub *cub, int turn_D, int walk_D)
 int key_press(mlx_key_data_t key_data, t_cub *cub)
 {
     (void)key_data;
+    // // if (mlx_is_key_down(cub->mlx ,MLX_KEY_))
+    //     close_window(cub);
     if (mlx_is_key_down(cub->mlx ,MLX_KEY_ESCAPE))
         close_window(cub);
     if (mlx_is_key_down(cub->mlx ,MLX_KEY_UP) || mlx_is_key_down(cub->mlx ,MLX_KEY_W))

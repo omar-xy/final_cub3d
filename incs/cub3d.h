@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:14:10 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/02 14:14:28 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/02 21:55:12 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ typedef struct s_cub
 	mlx_image_t	*img;
 }				t_cub;
 
-int		ft_parse_map(t_cub *cub, int fd);
+int 	ft_parse_map(t_cub *cub, int fd, char **hold_file, int *count);
+int 	ft_store_data(t_cub *cub, int count, char *hold_file);
 bool	detect_map(char *line);
 int		store_textures(t_cub *cub, char *line);
 int		parse_color(t_cub *cub, char *line, char flag);
@@ -114,17 +115,14 @@ void	fill_empty_spaces(t_cub *cub);
 int		check_map(t_cub *cub);
 int		check_textures(t_cub *cub);
 int		ft_error(t_cub *cub, char *str);
-
+char	*store_loop_map(t_cub *cub, int *count, int flg, char *line);
 void	check_angle(t_cub *cub);
 void	init_window(t_cub *cub);
 void 	inital_text(t_img *img);
 void 	texture_init(t_cub *cub);
 void	free_towd(char **str);
-void	draw(t_cub *cub);
-int		rgb_to_int(int r, int g, int b, int a);
+int		rgb(int r, int g, int b, int a);
 int		key_press(mlx_key_data_t key_data, t_cub *cub);
-// int		key_relase(mlx_key_data_t key_data, t_cub *cub);
-void	draw_player(t_cub *cub);
 int		is_wall(t_cub *cub, double x, double y);
 void	raycaster(t_cub *cub);
 void	rendering(t_cub *cub, double angle_ray, int j);

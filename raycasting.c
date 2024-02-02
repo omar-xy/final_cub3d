@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
+/*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 02:23:30 by ahamrad           #+#    #+#             */
-/*   Updated: 2024/02/01 21:12:48 by ahamrad          ###   ########.fr       */
+/*   Updated: 2024/02/02 21:55:35 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ void    rendering(t_cub *cub, double angle_ray, int j)
     {
         if (i < w_h && j < w_w && i > 0 && j > 0)
         {
-            mlx_put_pixel(cub->img, j, i, rgb_to_int(cub->map.ceiling.r, cub->map.ceiling.g, cub->map.ceiling.b, 255));
+            mlx_put_pixel(cub->img, j, i, rgb(cub->map.ceiling.r, cub->map.ceiling.g, cub->map.ceiling.b, 255));
         }
         i++;
     }
@@ -193,7 +193,7 @@ void    rendering(t_cub *cub, double angle_ray, int j)
     {
         if (i < w_h && j < w_w && i > 0 && j > 0)
         {
-            mlx_put_pixel(cub->img, j, i, rgb_to_int(cub->map.floor.r, cub->map.floor.g, cub->map.floor.b, 255));
+            mlx_put_pixel(cub->img, j, i, rgb(cub->map.floor.r, cub->map.floor.g, cub->map.floor.b, 255));
         }
         i++;
     }

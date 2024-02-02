@@ -6,7 +6,7 @@
 #    By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 23:12:18 by otaraki           #+#    #+#              #
-#    Updated: 2024/02/02 14:15:59 by otaraki          ###   ########.fr        #
+#    Updated: 2024/02/02 21:43:50 by otaraki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MLX := MLX42/build/libmlx42.a
 MLX_FLAGS := -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
 CC := cc 
-CFLAGS := -g -Wall -Wextra -Werror -Ofast
+CFLAGS := -g -Wall -Wextra -Werror -Ofast -fsanitize=address
 # -fsanitize=address
 
 I = -I /Users/${USER}/.brew/Cellar/glfw/3.3.9/include/GLFW
@@ -31,7 +31,7 @@ L = -L /Users/${USER}/.brew/Cellar/glfw/3.3.9/lib
 
 HEADERS := incs/cub3d.h incs/defines.h
 
-FILES := cub3d parse_utils raycasting keyhandle utils
+FILES := cub3d parse_utils parse1_utils parse2_utils parse3_utils parse4_utils raycasting keyhandle
 
 SRC := $(FILES:=.c)
 
