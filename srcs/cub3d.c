@@ -6,11 +6,19 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:20:47 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/04 14:43:59 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 15:00:16 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/cub3d.h"
+
+void close_all(t_cub *cub)
+{
+	close(cub->map.no_img->path);
+	close(cub->map.so_img->path);
+	close(cub->map.we_img->path);
+	close(cub->map.ea_img->path);
+}
 
 void	init_struct_imgs(t_cub *cub)
 {
@@ -42,6 +50,7 @@ int	ft_parse_cub(t_cub *cub, char *arg)
 		return (free(hold_file), 0);
 	free(hold_file);
 	hold_file = NULL;
+	close(fd);
 	return (1);
 }
 
@@ -69,6 +78,7 @@ int	main(int argc, char **argv)
 	mlx_key_hook(cub.mlx, (void *)key_press, &cub);
 	mlx_loop_hook(cub.mlx, (void *)move_player, &cub);
 	mlx_loop(cub.mlx);
+	close_all(&cub);
 	ft_error(&cub, NULL);
 	mlx_terminate(cub.mlx);
 	return (0);
