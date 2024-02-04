@@ -6,14 +6,13 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:20:47 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/04 05:00:19 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 14:43:59 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/cub3d.h"
 
-
-void init_struct_imgs(t_cub *cub)
+void	init_struct_imgs(t_cub *cub)
 {
 	ft_bzero(&cub->map, sizeof(t_map));
 	ft_bzero(cub, sizeof(t_cub));
@@ -46,7 +45,7 @@ int	ft_parse_cub(t_cub *cub, char *arg)
 	return (1);
 }
 
-void Fun(void)
+void	fun(void)
 {
 	system("leaks cub3D");
 }
@@ -56,7 +55,7 @@ int	main(int argc, char **argv)
 	t_cub	cub;
 	char	*str;
 
-	atexit(Fun);
+	atexit(fun);
 	if (argc != 2)
 		return (ft_error(NULL, "Error\nWrong number of arguments\n"));
 	str = ft_strnstr(argv[1], ".cub", ft_strlen(argv[1]));

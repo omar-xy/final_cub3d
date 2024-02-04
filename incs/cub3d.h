@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:14:10 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/04 04:47:07 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 14:05:54 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,18 @@ typedef struct s_ren
 	double	wall_projection;
 	double	wall;
 	double	start;
-	int		i;
+	int 	ratio;
+	int		n_ratio;
 }				t_ren;
 
 typedef struct s_cub
 {
+	
 	t_map		map;
 	t_player	player;
 	t_ray		ray;
 	mlx_t		*mlx;
+	t_ren 		ren;
 	mlx_image_t	*img;
 }				t_cub;
 
@@ -145,7 +148,7 @@ double	vertical_inter(t_cub *cub, double angle_ray);
 double	normalize_angle(double angle);
 int		is_up_down(t_player player);
 int		is_left_right(t_player player);
-t_ren	init_struct(t_cub *cub, double angle_ray);
+void	init_struct(t_cub *cub, t_ren *ren, double angle_ray, t_img *img);
 void	put_ceiling(t_cub *cub, t_ren r, int *i, int j);
 void	put_floor(t_cub *cub, int *i, int j);
 

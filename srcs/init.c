@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 03:06:35 by ahamrad           #+#    #+#             */
-/*   Updated: 2024/02/04 03:50:39 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 14:11:20 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_img	*init_img(t_cub *cub)
 		else
 			img = cub->map.we_img;
 	}
-	else if (cub->ray.horizontal_hit == 1)
+	else
 	{
 		if (cub->ray.up_or_down == 1)
 			img = cub->map.no_img;

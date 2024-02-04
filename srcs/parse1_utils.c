@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 20:03:19 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/04 04:52:35 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 14:45:24 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,9 @@ int	check_textures(t_cub *cub)
 		|| open(cub->map.ea_img->path, O_RDONLY) < 0)
 		return (ft_error(cub, "Error:\nTexture file not found\n"));
 	return (1);
+}
+
+int	rgb(int r, int g, int b, int a)
+{
+	return (r << 24 | g << 16 | b << 8 | a);
 }

@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 21:39:50 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/04 03:48:13 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 14:22:17 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ void	fill_empty_spaces(t_cub *cub)
 	}
 }
 
-void free_path(t_cub *cub)
+void	free_path(t_cub *cub)
 {
 	char	*s;
 	char	*e;
 	char	*w;
 	char	*n;
-	
+
 	s = cub->map.so_img->path;
 	e = cub->map.ea_img->path;
 	w = cub->map.we_img->path;
@@ -100,7 +100,6 @@ void free_path(t_cub *cub)
 
 int	ft_error(t_cub *cub, char *str)
 {
-
 	if (str)
 		ft_putstr_fd(str, 2);
 	if (cub != NULL)

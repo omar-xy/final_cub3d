@@ -6,7 +6,7 @@
 #    By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 23:12:18 by otaraki           #+#    #+#              #
-#    Updated: 2024/02/04 02:45:54 by otaraki          ###   ########.fr        #
+#    Updated: 2024/02/04 14:45:09 by otaraki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MLX_FLAGS := -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
 CC := cc
  
-CFLAGS := -g -Wall -Wextra -Werror -Ofast 
+CFLAGS := -g -Wall -Wextra -Werror -Ofast
 # -fsanitize=address
 
 I = -I /Users/${USER}/.brew/Cellar/glfw/3.3.9/include/GLFW
@@ -29,7 +29,7 @@ L = -L /Users/${USER}/.brew/Cellar/glfw/3.3.9/lib
 HEADERS := incs/cub3d.h incs/defines.h
 
 FILES := srcs/cub3d \
-		 srcs/parse_utils \
+		 srcs/texture_utils \
 		 srcs/parse1_utils \
 		 srcs/parse2_utils \
 		 srcs/parse3_utils \

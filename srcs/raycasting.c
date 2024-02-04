@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 02:23:30 by ahamrad           #+#    #+#             */
-/*   Updated: 2024/02/03 23:58:21 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 14:40:56 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,45 +72,27 @@ double	vertical_inter(t_cub *cub, double angle_ray)
 
 void	rendering(t_cub *cub, double angle_ray, int j)
 {
-	int w_w = cub->mlx->width;
-	int w_h = cub->mlx->height;
-	double  distance_to_wall = get_ray_length(cub, angle_ray) * cos(angle_ray - cub->player.angle);
-	double  wall_projection = (w_w / 2) / tan(30 * M_PI / 180);
-	double  wall = ( 64 / distance_to_wall) * wall_projection;
-	double  start = (w_h / 2) - (wall / 2);
+	int		i;
+	int		w_w;
+	int		w_h;
+	t_img	*img;
 
-	int ratio;
-	int n_ratio;
-
-	t_img *img = init_img(cub);
-	if (cub->ray.vertical_hit == true)
-		ratio = (cub->ray.yv / TILE_SIZE - (int)(cub->ray.yv / TILE_SIZE)) * img->width;
-	else if (cub->ray.horizontal_hit == true)
-		ratio = (cub->ray.xh / TILE_SIZE - (int)(cub->ray.xh / TILE_SIZE)) * img->width; 
-	int i = 0;
-	while (i < start)
+	i = 0;
+	img = init_img(cub);
+	w_w = cub->mlx->width;
+	w_h = cub->mlx->height;
+	init_struct(cub, &cub->ren, angle_ray, img);
+	put_ceiling(cub, cub->ren, &i, j);
+	while (i < cub->ren.start + cub->ren.wall)
 	{
 		if (i < w_h && j < w_w && i > 0 && j > 0)
 		{
-			mlx_put_pixel(cub->img, j, i, rgb(cub->map.ceiling.r, cub->map.ceiling.g, cub->map.ceiling.b, 255));
+			cub->ren.n_ratio = (i - cub->ren.start) * \
+			((double)img->height / cub->ren.wall);
+			mlx_put_pixel(cub->img, j, i, \
+			img->img[cub->ren.ratio + (cub->ren.n_ratio * img->width)]);
 		}
 		i++;
 	}
-	while (i < start + wall)
-	{
-		if (i < w_h && j < w_w && i > 0 && j > 0)
-		{
-			n_ratio = (i - start) * ((double)img->height / wall);
-			mlx_put_pixel(cub->img, j, i, img->img[ratio + (n_ratio * img->width)]);
-		}
-		i++;
-	}
-	while (i < w_h)
-	{
-		if (i < w_h && j < w_w && i > 0 && j > 0)
-		{
-			mlx_put_pixel(cub->img, j, i, rgb(cub->map.floor.r, cub->map.floor.g, cub->map.floor.b, 255));
-		}
-		i++;
-	}
+	put_floor(cub, &i, j);
 }

@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 14:11:58 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/04 04:52:48 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 14:44:42 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,30 @@ int	check_png(char *path)
 	int	i;
 
 	i = ft_strlen(path);
+	if (i < 4)
+		return (0);
 	if (path[i - 1] != 'g' || path[i - 2] != 'n' || path[i - 3] != 'p'\
 		|| path[i - 4] != '.')
 		return (0);
 	return (1);
+}
+
+mlx_texture_t	*func(t_cub *cub, t_img *img)
+{
+	mlx_texture_t	*t;
+
+	if (!check_png(img->path))
+	{
+		ft_error(cub, "Error:\ntexture must end with.png\n");
+		exit(1);
+	}
+	t = mlx_load_png(img->path);
+	if (!t)
+	{
+		ft_error(cub, "Error:\ninvalid texture path\n");
+		exit(1);
+	}
+	return (t);
 }
 
 void	inital_text(t_img *img, t_cub *cub)
@@ -38,12 +58,7 @@ void	inital_text(t_img *img, t_cub *cub)
 	unsigned int	j;
 	unsigned int	i;
 
-	if (!check_png(img->path))
-	{
-		ft_error(cub, "Error:\ntexture must end with.png\n");
-		exit(1);
-	}
-	t = mlx_load_png(img->path);
+	t = func(cub, img);
 	img->height = t->height;
 	img->width = t->width;
 	bf = ft_calloc(sizeof(unsigned int), (img->width * img->height));
@@ -70,9 +85,4 @@ void	check_angle(t_cub *cub)
 		cub->player.angle = M_PI;
 	else if (cub->player.dir == 'N')
 		cub->player.angle = 3 * M_PI / 2;
-}
-
-int	rgb(int r, int g, int b, int a)
-{
-	return (r << 24 | g << 16 | b << 8 | a);
 }
