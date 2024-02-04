@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:14:10 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/02 21:55:12 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 04:47:07 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,19 @@ typedef struct s_map
 	int			height;
 	t_floor		floor;
 	t_ceiling	ceiling;
-	char		*no_path;
-	char		*so_path;
-	char		*we_path;
-	char		*ea_path;
 	t_img		*no_img;
 	t_img		*so_img;
 	t_img		*we_img;
 	t_img		*ea_img;
-	char		**store_map;
+	char		**info;
 }				t_map;
 
 typedef struct s_player
 {
 	int		move_up;
 	int		move_down;
-	int look_left;
-	int look_right;
+	int		look_left;
+	int		look_right;
 	int		move_left;
 	int		move_right;
 	double	x;
@@ -95,6 +91,15 @@ typedef struct s_ray
 	double	angle_ray;
 }				t_ray;
 
+typedef struct s_ren
+{
+	double	distance_to_wall;
+	double	wall_projection;
+	double	wall;
+	double	start;
+	int		i;
+}				t_ren;
+
 typedef struct s_cub
 {
 	t_map		map;
@@ -104,8 +109,8 @@ typedef struct s_cub
 	mlx_image_t	*img;
 }				t_cub;
 
-int 	ft_parse_map(t_cub *cub, int fd, char **hold_file, int *count);
-int 	ft_store_data(t_cub *cub, int count, char *hold_file);
+int		ft_parse_map(t_cub *cub, int fd, char **hold_file);
+void	ft_store_data(t_cub *cub, char *hold_file);
 bool	detect_map(char *line);
 int		store_textures(t_cub *cub, char *line);
 int		parse_color(t_cub *cub, char *line, char flag);
@@ -115,11 +120,10 @@ void	fill_empty_spaces(t_cub *cub);
 int		check_map(t_cub *cub);
 int		check_textures(t_cub *cub);
 int		ft_error(t_cub *cub, char *str);
-char	*store_loop_map(t_cub *cub, int *count, int flg, char *line);
 void	check_angle(t_cub *cub);
 void	init_window(t_cub *cub);
-void 	inital_text(t_img *img);
-void 	texture_init(t_cub *cub);
+void	inital_text(t_img *img, t_cub *cub);
+void	texture_init(t_cub *cub);
 void	free_towd(char **str);
 int		rgb(int r, int g, int b, int a);
 int		key_press(mlx_key_data_t key_data, t_cub *cub);
@@ -128,5 +132,21 @@ void	raycaster(t_cub *cub);
 void	rendering(t_cub *cub, double angle_ray, int j);
 void	move_player(t_cub *cub, int turn_D, int walk_D);
 double	normalize_angle(double angle);
+t_img	*init_img(t_cub *cub);
+void	init_window(t_cub *cub);
+void	check_directions(t_cub *cub, double angle_ray);
+double	distance(double x1, double x2, double y1, double y2);
+int		is_wall(t_cub *cub, double x, double y);
+void	checks_for_vertical(t_cub *cub, double angle_ray);
+void	checks_for_horizontal(t_cub *cub, double angle_ray);
+double	get_ray_length(t_cub *cub, double angle_ray);
+double	horizontal_inter(t_cub *cub, double angle_ray);
+double	vertical_inter(t_cub *cub, double angle_ray);
+double	normalize_angle(double angle);
+int		is_up_down(t_player player);
+int		is_left_right(t_player player);
+t_ren	init_struct(t_cub *cub, double angle_ray);
+void	put_ceiling(t_cub *cub, t_ren r, int *i, int j);
+void	put_floor(t_cub *cub, int *i, int j);
 
 #endif

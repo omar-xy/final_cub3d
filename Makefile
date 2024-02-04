@@ -6,32 +6,40 @@
 #    By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 23:12:18 by otaraki           #+#    #+#              #
-#    Updated: 2024/02/02 21:43:50 by otaraki          ###   ########.fr        #
+#    Updated: 2024/02/04 02:45:54 by otaraki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 EXE := cub3D
 
 ARCH := libft/libft.a
+
 MLX := MLX42/build/libmlx42.a
 
-
-# MLX_FLAGS := -L MLX42 -lmlx -framework OpenGL -framework AppKit
 MLX_FLAGS := -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
-CC := cc 
-CFLAGS := -g -Wall -Wextra -Werror -Ofast -fsanitize=address
+CC := cc
+ 
+CFLAGS := -g -Wall -Wextra -Werror -Ofast 
 # -fsanitize=address
 
 I = -I /Users/${USER}/.brew/Cellar/glfw/3.3.9/include/GLFW
 L = -L /Users/${USER}/.brew/Cellar/glfw/3.3.9/lib
 
-# I := -I inc -I libft -I MLX42
-# L := -L libft -L MLX42
-
 HEADERS := incs/cub3d.h incs/defines.h
 
-FILES := cub3d parse_utils parse1_utils parse2_utils parse3_utils parse4_utils raycasting keyhandle
+FILES := srcs/cub3d \
+		 srcs/parse_utils \
+		 srcs/parse1_utils \
+		 srcs/parse2_utils \
+		 srcs/parse3_utils \
+		 srcs/parse4_utils \
+		 srcs/raycasting \
+		 srcs/keyhandle \
+		 srcs/init \
+		 srcs/raycasting_utils \
+		 srcs/keyhandle_utils \
+		 srcs/rendering_utils \
 
 SRC := $(FILES:=.c)
 

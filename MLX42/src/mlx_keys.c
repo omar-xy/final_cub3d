@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_keys.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/01 21:06:45 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/01/20 16:59:45 by otaraki          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   mlx_keys.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/01/01 21:06:45 by W2Wizard      #+#    #+#                 */
+/*   Updated: 2023/02/13 12:24:40 by W2Wizard      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void mlx_key_callback(GLFWwindow* window, int32_t key, int32_t scancode, 
 
 //= Public =//
 
-void amlx_key_hook(mlx_t* mlx, mlx_keyfunc func, void* param)
+void mlx_key_hook(mlx_t* mlx, mlx_keyfunc func, void* param)
 {
 	MLX_NONNULL(mlx);
 	MLX_NONNULL(func);

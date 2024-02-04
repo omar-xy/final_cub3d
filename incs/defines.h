@@ -6,7 +6,7 @@
 /*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:30:54 by otaraki           #+#    #+#             */
-/*   Updated: 2024/01/30 01:09:14 by ahamrad          ###   ########.fr       */
+/*   Updated: 2024/02/03 01:20:47 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define TILE_SIZE 64
 # define WINDOW_WIDTH 1090
 # define WINDOW_HEIGHT 1090
-# define FOV_ANGLE (60 * (M_PI / 180)) 
+# define FOV_ANGLE 1.0471975512
 # define NUM_RAYS 60
 # define MINIMAP_SCALE_FACTOR 0.3
 # define FPS 30

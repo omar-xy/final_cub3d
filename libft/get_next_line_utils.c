@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ahamrad <ahamrad@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:45:11 by otaraki           #+#    #+#             */
-/*   Updated: 2023/12/14 21:25:51 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/03 01:23:44 by ahamrad          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-
 
 char	*ft_strjoin_free(char *line, char *buff)
 {

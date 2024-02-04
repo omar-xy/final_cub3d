@@ -1,10 +1,10 @@
-EA ./mok.png
-NO ./mok.png
-SO ./mok.png
-WE ./mok.png
+EA ./textures/WALLDGD.png
+NO ./textures/wallHD.png
+SO ./textures/wallHDD.png
+WE ./textures/wallHDZ.png
 
-F 102,102,0
-C 102,0,255
+F 156,91,17
+C 68,66,64
 
 
 
