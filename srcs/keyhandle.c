@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 05:52:11 by ahamrad           #+#    #+#             */
-/*   Updated: 2024/02/04 03:52:12 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 15:05:30 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void	supply_check(t_cub *cub)
 int	key_press(mlx_key_data_t key_data, t_cub *cub)
 {
 	(void)key_data;
-	if (mlx_is_key_down(cub->mlx, MLX_KEY_ESCAPE))
+	if (mlx_is_key_down(cub->mlx, MLX_KEY_ESCAPE) \
+		|| mlx_is_key_down(cub->mlx, MLX_KEY_Q))
 		close_window(cub);
 	supply_check(cub);
 	if (mlx_is_key_down(cub->mlx, MLX_KEY_LEFT))

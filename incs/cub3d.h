@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:14:10 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/04 14:05:54 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/05 02:10:59 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_player
 	double	y;
 	char	dir;
 	double	fov; // 60
-	double	angle; // 3 * M_PI / 2
+	double	angle;
 }				t_player;
 
 typedef struct s_ray
@@ -97,22 +97,22 @@ typedef struct s_ren
 	double	wall_projection;
 	double	wall;
 	double	start;
-	int 	ratio;
+	int		ratio;
 	int		n_ratio;
 }				t_ren;
 
 typedef struct s_cub
 {
-	
 	t_map		map;
 	t_player	player;
 	t_ray		ray;
 	mlx_t		*mlx;
-	t_ren 		ren;
+	t_ren		ren;
 	mlx_image_t	*img;
 }				t_cub;
 
 int		ft_parse_map(t_cub *cub, int fd, char **hold_file);
+int		check_flg(t_cub *cub, int flg, char *line);
 void	ft_store_data(t_cub *cub, char *hold_file);
 bool	detect_map(char *line);
 int		store_textures(t_cub *cub, char *line);

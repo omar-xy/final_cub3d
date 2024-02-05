@@ -6,19 +6,11 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 23:20:47 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/04 15:00:16 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 23:29:49 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/cub3d.h"
-
-void close_all(t_cub *cub)
-{
-	close(cub->map.no_img->path);
-	close(cub->map.so_img->path);
-	close(cub->map.we_img->path);
-	close(cub->map.ea_img->path);
-}
 
 void	init_struct_imgs(t_cub *cub)
 {
@@ -28,6 +20,34 @@ void	init_struct_imgs(t_cub *cub)
 	cub->map.so_img = ft_calloc(sizeof(t_img), 1);
 	cub->map.we_img = ft_calloc(sizeof(t_img), 1);
 	cub->map.ea_img = ft_calloc(sizeof(t_img), 1);
+}
+
+int	ft_parse_map(t_cub *cub, int fd, char **hold_file)
+{
+	char	*line;
+	int		flg;
+
+	flg = 0;
+	while (true)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		if ((detect_map(line) || line[0] == '\n'))
+		{
+			if (detect_map(line))
+				flg = 1;
+			*hold_file = ft_strjoin_free(*hold_file, line);
+		}
+		if (line[0] != '\n' && !detect_map(line))
+		{
+			if (!check_flg(cub, flg, line))
+				return (free(line), 0);
+		}
+		free(line);
+	}
+	ft_store_data(cub, *hold_file);
+	return (free(line), 1);
 }
 
 int	ft_parse_cub(t_cub *cub, char *arg)
@@ -47,7 +67,7 @@ int	ft_parse_cub(t_cub *cub, char *arg)
 	if (!check_textures(cub))
 		return (free(hold_file), 0);
 	if (!check_map(cub))
-		return (free(hold_file), 0);
+		return (free(hold_file), ft_error(cub, "Error:\nInvalid Map!\n"));
 	free(hold_file);
 	hold_file = NULL;
 	close(fd);
@@ -78,7 +98,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(cub.mlx, (void *)key_press, &cub);
 	mlx_loop_hook(cub.mlx, (void *)move_player, &cub);
 	mlx_loop(cub.mlx);
-	close_all(&cub);
 	ft_error(&cub, NULL);
 	mlx_terminate(cub.mlx);
 	return (0);

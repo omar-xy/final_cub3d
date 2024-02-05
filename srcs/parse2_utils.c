@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 19:52:04 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/04 05:19:31 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/05 02:05:37 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ int	check_map(t_cub *cub)
 		while (cub->map.info[i][++j])
 		{
 			if (!condition_check(cub, cub->map.info, i, j))
-				return (ft_error(cub, "Error:\nInvalid Map!\n"));
+				return (0);
 			if (cub->map.info[i][j] == 'N' || cub->map.info[i][j] == 'S' \
 				|| cub->map.info[i][j] == 'W' || cub->map.info[i][j] == 'E')
 			{
+				if (cub->player.dir != '\0')
+					return (0);
 				cub->player.x = j * 64 + (64 / 2);
 				cub->player.y = i * 64 + (64 / 2);
 				cub->player.dir = cub->map.info[i][j];
@@ -61,9 +63,7 @@ int	check_map(t_cub *cub)
 			}
 		}
 	}
-	if (cub->player.dir == '\0')
-		return (0);
-	return (1);
+	return ((cub->player.dir != '\0'));
 }
 
 void	ft_store_data(t_cub *cub, char *hold_file)
@@ -78,39 +78,11 @@ void	ft_store_data(t_cub *cub, char *hold_file)
 	fill_empty_spaces(cub);
 }
 
-static int	check_flg(t_cub *cub, int flg, char *line)
+int	check_flg(t_cub *cub, int flg, char *line)
 {
 	if (flg == 1)
 		return (ft_error(cub, "Error: in map\n"));
 	if (!store_textures(cub, line))
 		exit(0);
 	return (1);
-}
-
-int	ft_parse_map(t_cub *cub, int fd, char **hold_file)
-{
-	char	*line;
-	int		flg;
-
-	flg = 0;
-	while (true)
-	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		if ((detect_map(line) || line[0] == '\n'))
-		{
-			if (detect_map(line))
-				flg = 1;
-			*hold_file = ft_strjoin_free(*hold_file, line);
-		}
-		if (line[0] != '\n' && !detect_map(line))
-		{
-			if (!check_flg(cub, flg, line))
-				return (free(line), 0);
-		}
-		free(line);
-	}
-	ft_store_data(cub, *hold_file);
-	return (free(line), 1);
 }

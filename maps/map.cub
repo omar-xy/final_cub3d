@@ -1,15 +1,15 @@
-EA ./textures/WALLDGD.png
-NO ./textures/wallHD.png
-SO ./textures/wallHDD.png
-WE ./textures/wallHDZ.png
+EA ./textures/brick.png
+NO ./textures/WALLDGD.png
+SO ./textures/wallOH.png
+WE ../FINAL_CUB3D/textures/WALLok.png
 
-F 156,91,17
+F 156,91,107
 C 68,66,64
 
 
-
-11111
-11N001
-11111
+11111111111111
+10000000000111
+11E00000000111
+11111111111111
 
 

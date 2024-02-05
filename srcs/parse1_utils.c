@@ -6,7 +6,7 @@
 /*   By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 20:03:19 by otaraki           #+#    #+#             */
-/*   Updated: 2024/02/04 14:45:24 by otaraki          ###   ########.fr       */
+/*   Updated: 2024/02/04 15:56:45 by otaraki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,25 @@ bool	detect_map(char *line)
 
 int	check_textures(t_cub *cub)
 {
+	int	fd_no;
+	int	fd_so;
+	int	fd_we;
+	int	fd_ea;
+
 	if (!cub->map.no_img->path || !cub->map.so_img->path \
 		|| !cub->map.we_img->path || !cub->map.ea_img->path \
 		|| !cub->map.floor.floor || !cub->map.ceiling.ceiling)
 		return (ft_error(cub, "Error:\nMissing texture or color\n"));
-	if (open(cub->map.no_img->path, O_RDONLY) < 0 \
-		|| open(cub->map.so_img->path, O_RDONLY) < 0 \
-		|| open(cub->map.we_img->path, O_RDONLY) < 0 \
-		|| open(cub->map.ea_img->path, O_RDONLY) < 0)
+	fd_no = open(cub->map.no_img->path, O_RDONLY);
+	fd_so = open(cub->map.so_img->path, O_RDONLY);
+	fd_we = open(cub->map.we_img->path, O_RDONLY);
+	fd_ea = open(cub->map.ea_img->path, O_RDONLY);
+	if (fd_ea < 0 || fd_no < 0 || fd_so < 0 || fd_we < 0)
 		return (ft_error(cub, "Error:\nTexture file not found\n"));
+	close(fd_no);
+	close(fd_so);
+	close(fd_we);
+	close(fd_ea);
 	return (1);
 }
 

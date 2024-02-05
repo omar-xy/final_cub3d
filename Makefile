@@ -6,7 +6,7 @@
 #    By: otaraki <otaraki@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/26 23:12:18 by otaraki           #+#    #+#              #
-#    Updated: 2024/02/04 14:45:09 by otaraki          ###   ########.fr        #
+#    Updated: 2024/02/05 02:15:01 by otaraki          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ re : fclean all
 
 run:
 	make all;
-	./cub3D maps/map1.cub
+	./cub3D maps/map.cub
 
 git :
 	git add .
